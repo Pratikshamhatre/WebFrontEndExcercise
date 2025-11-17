@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchUsersThunk } from "../services/usersService";
-
+import campaignsData from "../mocks/campaigns.json";
 
 const campaignsSlice = createSlice({
   name: "campaigns",
   initialState: {
-    campaignsList: [],
+    campaignsList: campaignsData,
     loading: false,
     error: null,
-    usersList:[]
+    usersList: [],
   },
   reducers: {
     addCampaigns: (state, action) => {
-      state.campaignsList.push(...action.payload); 
+      state.campaignsList.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -23,7 +23,7 @@ const campaignsSlice = createSlice({
       })
       .addCase(fetchUsersThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.usersList = action.payload; 
+        state.usersList = action.payload;
       })
       .addCase(fetchUsersThunk.rejected, (state, action) => {
         state.loading = false;

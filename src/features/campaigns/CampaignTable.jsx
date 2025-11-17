@@ -79,34 +79,37 @@ export default function CampaignTable() {
     },
   ];
 
- const filtered = useMemo(() => {
-  const list = [...campaignsList].filter(
-    (c) => new Date(c.startDate) < new Date(c.endDate)
-  );
+  const filtered = useMemo(() => {
+    const list = [...campaignsList].filter(
+      (c) => new Date(c.startDate) < new Date(c.endDate)
+    );
 
-  return list.filter((c) => {
-    const campaignStart = new Date(c.startDate);
-    const campaignEnd = new Date(c.endDate);
+    return list.filter((c) => {
+      const campaignStart = new Date(c.startDate);
+      const campaignEnd = new Date(c.endDate);
 
-    const filterStart = dateRange.startDate ? new Date(dateRange.startDate) : null;
-    const filterEnd = dateRange.endDate ? new Date(dateRange.endDate) : null;
+      const filterStart = dateRange.startDate
+        ? new Date(dateRange.startDate)
+        : null;
+      const filterEnd = dateRange.endDate ? new Date(dateRange.endDate) : null;
 
-    let dateInRange = true;
-    if (filterStart && filterEnd) {
-      const startInRange = campaignStart >= filterStart && campaignStart <= filterEnd;
-      const endInRange = campaignEnd >= filterStart && campaignEnd <= filterEnd;
-      dateInRange = startInRange || endInRange;
-    }
+      let dateInRange = true;
+      if (filterStart && filterEnd) {
+        const startInRange =
+          campaignStart >= filterStart && campaignStart <= filterEnd;
+        const endInRange =
+          campaignEnd >= filterStart && campaignEnd <= filterEnd;
+        dateInRange = startInRange || endInRange;
+      }
 
-    let matchesSearch = true;
-    if (submit && searchTerm.trim()) {
-      matchesSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase());
-    }
+      let matchesSearch = true;
+      if (submit && searchTerm.trim()) {
+        matchesSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase());
+      }
 
-    return dateInRange && matchesSearch;
-  });
-}, [campaignsList, dateRange, searchTerm, submit]);
-
+      return dateInRange && matchesSearch;
+    });
+  }, [campaignsList, dateRange, searchTerm, submit]);
 
   return (
     <>
@@ -116,7 +119,6 @@ export default function CampaignTable() {
           endDate={dateRange.endDate}
           onChange={(range) => setDateRange(range)}
           disabled={campaignsList?.length <= 0}
-
         />
         <SearchInput
           onChange={setSearchTerm}

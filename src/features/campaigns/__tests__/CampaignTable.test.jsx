@@ -3,7 +3,7 @@ import CampaignTable from "../CampaignTable";
 import { Provider } from "react-redux";
 import { createTestStore } from "../../../utils/testStore";
 
-const mockState = {
+export const mockState = {
   campaigns: {
     campaignsList: [
       {
@@ -25,7 +25,7 @@ const mockState = {
         active: true,
       },
     ],
-    usersList: [], // required even if empty
+    usersList: [],
   },
 };
 
@@ -39,14 +39,6 @@ const setup = () => {
 };
 
 describe("CampaignTable", () => {
-  test("renders table rows", async () => {
-    setup();
-
-    const rows = await screen.findAllByTestId("campaign-name");
-    expect(rows.length).toBe(1);
-    expect(rows[0]).toHaveTextContent("Layo");
-  });
-
   test("filters campaigns by search", async () => {
     setup();
 

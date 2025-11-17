@@ -26,7 +26,7 @@ export default function DateRangePicker({
     <div className={`flex flex-col gap-3 ${className}`}>
       <div className="flex gap-4 items-end">
         <div className="flex flex-col w-max">
-          <label className="text-sm font-medium text-gray-600" htmlFor="startDate">
+          <label className="text-fluid-sm font-medium text-gray-600" htmlFor="startDate">
             Start Date
           </label>
           <input
@@ -43,7 +43,7 @@ export default function DateRangePicker({
         </div>
 
         <div className="flex flex-col w-max">
-          <label className="text-sm font-medium text-gray-600" htmlFor="endDate">End Date</label>
+          <label className="text-fluid-sm font-medium text-gray-600" htmlFor="endDate">End Date</label>
           <input
             type="date"
             value={endDate}

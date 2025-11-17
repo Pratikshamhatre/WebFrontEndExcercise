@@ -1,9 +1,9 @@
 export const today = new Date();
 
-const convertToISO = (dateStr) => {
-  if (!dateStr) return;
-  const [dd, mm, yyyy] = dateStr.split("/");
-  return `${yyyy}-${mm}-${dd}`; // ISO format
+export const formatToMMDDYYYY = (dateStr) => {
+  if (!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  return `${month}/${day}/${year}`;
 };
 
 export const isTodayInRange = (startDate, endDate) => {
