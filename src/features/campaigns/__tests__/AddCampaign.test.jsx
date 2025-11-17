@@ -42,23 +42,5 @@ describe("AddCampaignForm", () => {
   expect(screen.getByLabelText(/end date/i)).toBeInTheDocument();
   expect(screen.getByLabelText(/budget/i)).toBeInTheDocument();
 });
-// it("shows validation errors when submitting empty form", () => {
-//   const store = createTestStore(mockState);
-
-//   render(
-//     <Provider store={store}>
-//       <AddCampaignForm />
-//     </Provider>
-//   );
-
-//   fireEvent.click(screen.getByRole("button", { name: /add/i }));
-
-//   expect(screen.getByText("Name is required")).toBeInTheDocument();
-//   expect(screen.getByText("Start date is required")).toBeInTheDocument();
-//   expect(screen.getByText("End date is required")).toBeInTheDocument();
-//   expect(screen.getByText("Budget is required")).toBeInTheDocument();
-//   expect(screen.getByText("User ID is required")).toBeInTheDocument();
-// });
-
 });
 
